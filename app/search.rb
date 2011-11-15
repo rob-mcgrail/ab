@@ -14,22 +14,10 @@ class Search
 end
 
 
-class Handler
-  include DataMapper::Resource
-
-  property :id,           Serial
-  property :score,        Integer,  :required => false
-  property :searches,     Integer,  :required => false
-  property :scored,       Integer,  :required => false
-  property :handler,      String
-end
-
-
-
 get '/?' do
-  haml :'search/main'
-  
   # create authenticity token?
+
+  haml :'search/main'
 end
 
 
@@ -63,3 +51,36 @@ get '/search/:id?' do
 
 
 end
+
+
+get '/search/:id/explain?' do
+
+end
+
+
+get '/compare/:handler_a/:handler_b?' do
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

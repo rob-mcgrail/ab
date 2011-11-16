@@ -7,3 +7,8 @@ input, textarea{padding:10px;margin-top:5px;margin-bottom:5px;}
 div#flashes {min-height:30px;}
 .error {color:red}
 .success {color:green}
+
+/* results */
+div.rank_options {padding-bottom:20px;padding-top:10px;}
+div#permalink {padding-top:60px;}
+p.permalink {color:#444;font-size:13px;}

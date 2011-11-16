@@ -1,7 +1,8 @@
-- if flash[:success] || flash[:error]
-    - if flash[:success]
-        %p.message
-            = flash[:success]
-    - if flash[:error]
-        %p.warning
-            = flash[:error]
+#flashes
+    - if flash[:success] || flash[:error]
+        - if flash[:success]
+            %p.success
+                = flash[:success]
+        - if flash[:error]
+            %p.error
+                = flash[:error]

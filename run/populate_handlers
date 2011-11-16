@@ -1,0 +1,19 @@
+require 'app.rb'
+
+handler = Handler.first_or_create({ :name => 'no_settings' }, {
+  :name      => 'no_settings',
+  :request => 'qt=tki',
+  :created_at => Time.now
+})
+
+handler.save
+
+handler = Handler.first_or_create({ :name => 'no_settings_either' }, {
+  :name      => 'no_settings_either',
+  :request => 'qt=tki',
+  :created_at => Time.now
+})
+
+handler.save
+
+

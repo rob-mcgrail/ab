@@ -7,7 +7,7 @@ configure :development do
   set :method_override, true # probably not using this
   set :sessions, true
   set :haml, {:format => :html5, :ugly => true }
-  set :solr_log_file, '/public/log/searches.csv'
+  set :solr_log_file, 'public/log/searches.csv'
   set :base_score, 1
   set :super_score, 2
 end
@@ -21,7 +21,7 @@ configure :production do
   set :method_override, true # probably not using this
   set :sessions, true
   set :haml, {:format => :html5, :ugly => true }
-  set :solr_log_file, '/public/log/searches.csv'
+  set :solr_log_file, 'public/log/searches.csv'
   set :base_score, 1
   set :super_score, 2
 end

@@ -18,17 +18,10 @@ class Search
   def log(file_name = settings.solr_log_file)
     begin
       unless File.exists? file_name
-        File.open(file_name, w) {|f| f.write 'DATE, IP, QUERY_TERM, A, B, WINNER, LOSER, SCORE'}
+        File.open(file_name, 'w') {|f| f.write "DATE, IP, QUERY_TERM, A, B, WINNER, LOSER, SCORE\n"}
       end
       File.open(file_name, 'a+') do |f|
-        f.write "#{self.created_at}, \
-        #{@env['REMOTE_ADDR']}, \
-        #{self.query_term}, \
-        #{self.a}, \
-        #{self.b}, \
-        #{self.winner}, \
-        #{self.loser}, \
-        #{self.win_score}"
+        f.write "#{self.created_at}, #{self.ip}, #{self.query_term}, #{self.a}, #{self.b}, #{self.winner}, #{self.loser}, #{self.win_score}\n"
       end
     rescue Exception => e
       puts e

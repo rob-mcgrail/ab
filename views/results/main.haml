@@ -1,0 +1,24 @@
+= haml :'results/rank_options', :locals => {
+    :handler => @results[0][:handler], 
+    :text => 'Much better', 
+    :score => settings.super_score
+  }
+  
+= haml :'results/rank_options', :locals => {
+    :handler => @results[0][:handler], 
+    :text => 'Better', 
+    :score => settings.base_score
+  }
+
+
+= haml :'results/rank_options', :locals => {
+    :handler => @results[1][:handler], 
+    :text => 'Much better', 
+    :score => settings.super_score
+  }
+  
+= haml :'results/rank_options', :locals => {
+    :handler => @results[1][:handler], 
+    :text => 'Better', 
+    :score => settings.base_score
+  }

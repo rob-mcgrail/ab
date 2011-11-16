@@ -42,23 +42,18 @@ end
 
 
 post '/compare?' do
-  q = params[:query_term]
-  handlers = Handlers.any_two
-  handler_check handlers
-  @results = []
-  handlers.each do |k,v|
-    #the search
-    @results << {:handler => 'placeholder', :results => [1,2,3,4,5]} #dummy content
-  end
+  q = injest_query
+  handlers = Handlers.any_two_safely
+  @results = ab_search(handlers, q)
   @search = Search.new(
-    :query =>     q,
-    :ip =>        @env['REMOTE_ADDR'],
-    :a =>         handlers[:a],
-    :b =>         handlers[:b],
-    :created_at => Time.now
+    :query_term =>  q,
+    :ip =>          @env['REMOTE_ADDR'],
+    :a =>           handlers[:a],
+    :b =>           handlers[:b],
+    :created_at =>  Time.now
   )
   if @search.save
-    haml :'search/results'
+    haml :'results/main'
   else
     flash[:error] = error_text[:generic]
     redirect '/'

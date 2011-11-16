@@ -1,24 +1,27 @@
-= haml :'results/rank_options', :locals => {
-    :handler => @results[0][:handler], 
-    :text => 'Much better', 
-    :score => settings.super_score
-  }
-  
-= haml :'results/rank_options', :locals => {
-    :handler => @results[0][:handler], 
-    :text => 'Better', 
-    :score => settings.base_score
-  }
+%div(class='width4 stroke')
+    %div(class='column width1 first rank_options')
+        = haml :'results/rank_options', :locals => {:handler => @results[0][:handler], :text => 'Much better', :score => settings.super_score}
 
+    %div(class='column width1 rank_options')
+        = haml :'results/rank_options', :locals => {:handler => @results[0][:handler], :text => 'Better', :score => settings.base_score}
 
-= haml :'results/rank_options', :locals => {
-    :handler => @results[1][:handler], 
-    :text => 'Much better', 
-    :score => settings.super_score
-  }
-  
-= haml :'results/rank_options', :locals => {
-    :handler => @results[1][:handler], 
-    :text => 'Better', 
-    :score => settings.base_score
-  }
+    %div(class='column width1 rank_options')
+        = haml :'results/rank_options', :locals => {:handler => @results[1][:handler], :text => 'Better', :score => settings.base_score}
+
+    %div(class='column width1 rank_options')  
+        = haml :'results/rank_options', :locals => {:handler => @results[1][:handler], :text => 'Much better', :score => settings.super_score}
+        
+%div(class='width4 stroke')
+    %div(class='column width2 first result_set')
+        - @results[0][:items].each do |item|
+            %div(class='result')
+                = haml :'results/item', :locals => {:item => item}
+    
+    %div(class='column width2 result_set')
+        - @results[1][:items].each do |item|
+            %div(class='result')
+                = haml :'results/item', :locals => {:item => item}
+                
+%div(class='width4 stroke' id='permalink')
+    %div(class='width4 first' id='permalink')
+        = haml :'results/permalink'

@@ -6,7 +6,9 @@ class Handler
 
   property :id,           Serial
   property :name,         String,   :unique => true
+  property :request,      String
   property :score,        Integer,  :required => false
   property :searches,     Integer,  :required => false
   property :scored,       Integer,  :required => false
+  property :created_at,   DateTime
 end

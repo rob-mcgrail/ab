@@ -1,2 +1,2 @@
 %p(class='permalink')
-    Retrieve this search at #{link_to("http://search/#{@search.id}", "http://search/#{@search.id}")}
+    Retrieve this search at #{link_to(uri("search/#{@search.id}", true), "search/#{@search.id}")}

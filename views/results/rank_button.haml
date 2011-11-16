@@ -1,0 +1,11 @@
+%form(id='rank' method='post' action='/compare/rank')
+
+    %input(name='search_id' type='hidden' value='#{@search.id}')
+    %input(name='query' type='hidden' value='#{@search.query_term}')
+    %input(name='a' type='hidden' value='#{@search.a}')
+    %input(name='b' type='hidden' value='#{@search.b}')
+    %input(name='score' type='hidden' value='#{locals[:score]}')
+    %input(name='winner' type='hidden' value='#{locals[:handler]}')
+
+    %button(type='submit')
+        = locals[:text]

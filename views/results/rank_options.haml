@@ -1,11 +1,11 @@
-%form(id='rank' method='post' action='/compare/rank')
+%div(class='column width1 first rank_options')
+    = haml :'results/rank_button', :locals => {:handler => @results[0][:handler], :text => 'Much better', :score => settings.super_score}
 
-    %input(name='search_id' type='hidden' value='#{@search.id}')
-    %input(name='query' type='hidden' value='#{@search.query_term}')
-    %input(name='a' type='hidden' value='#{@search.a}')
-    %input(name='b' type='hidden' value='#{@search.b}')
-    %input(name='score' type='hidden' value='#{locals[:score]}')
-    %input(name='winner' type='hidden' value='#{locals[:handler]}')
-        
-    %button(type='submit')
-        = locals[:text]
+%div(class='column width1 rank_options')
+    = haml :'results/rank_button', :locals => {:handler => @results[0][:handler], :text => 'Better', :score => settings.base_score}
+
+%div(class='column width1 rank_options')
+    = haml :'results/rank_button', :locals => {:handler => @results[1][:handler], :text => 'Better', :score => settings.base_score}
+
+%div(class='column width1 rank_options')  
+    = haml :'results/rank_button', :locals => {:handler => @results[1][:handler], :text => 'Much better', :score => settings.super_score}

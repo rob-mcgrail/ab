@@ -5,7 +5,8 @@
     %input(name='a' type='hidden' value='#{@search.a}')
     %input(name='b' type='hidden' value='#{@search.b}')
     %input(name='score' type='hidden' value='#{locals[:score]}')
-    %input(name='winner' type='hidden' value='#{locals[:handler]}')
-
+    %input(name='winner' type='hidden' value='#{locals[:winner]}')
+    %input(name='loser' type='hidden' value='#{locals[:loser]}')
+    
     %button(type='submit')
         = locals[:text]

@@ -2,17 +2,17 @@
     - unless @search.winner
         = haml :'results/rank_options'
 
-%div(class='width4 stroke outcome')
+%div(class='width4 stroke' id='outcome')
     - if @search.winner
         = haml :'results/outcome'
  
 %div(class='width4 stroke')
-    %div(class='column width2 first result_set')
+    %div(class='column width2 first result_set #{winner_class(:a)}')
         - @results[0][:items].each do |item|
             %div(class='result')
                 = haml :'results/item', :locals => {:item => item}
     
-    %div(class='column width2 result_set')
+    %div(class='column width2 result_set #{winner_class(:b)}')
         - @results[1][:items].each do |item|
             %div(class='result')
                 = haml :'results/item', :locals => {:item => item}

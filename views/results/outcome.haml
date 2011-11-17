@@ -1,0 +1,8 @@
+%h2
+    Results for #{safe @search.query_term}
+
+%div(class='column width3 first outcome_info')
+    %p
+        Winning handler: #{safe @winner.name} (Ranked best #{@winner.positive}/#{@winner.ranked_searches} times), with a total score of #{@winner.score}
+    %p
+        Losing handler: #{safe @loser.name} (Ranked best #{@loser.positive}/#{@loser.ranked_searches} times)

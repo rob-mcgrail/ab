@@ -36,20 +36,21 @@ end
 
 
 post '/compare?' do
-  q = injest_query
-  handlers = Handlers.any_two_safely
+  q = injest_query(params[:query_term])
+  handlers = Handler.any_two_safely
   @results = ab_search(handlers, q)
   @search = Search.new(
     :query_term =>  q,
     :ip =>          @env['REMOTE_ADDR'],
-    :a =>           handlers[:a],
-    :b =>           handlers[:b],
+    :a =>           handlers[:a].id,
+    :b =>           handlers[:b].id,
     :created_at =>  Time.now
   )
   if @search.save
-    haml :'results/main'
+    flash[:success] = success_text[:search_for]
+    redirect "/search/#{@search.id}"
   else
-    flash[:error] = error_text[:generic]
+    flash[:error] = error_text[:cant_save]
     redirect '/'
   end
 end
@@ -62,13 +63,12 @@ end
 
 
 post '/compare/rank?' do
-  @a = Handler.first(:name => params[:a]) #error handling needed, also how does this gel with Handlers.get_two...
-  @b = Handler.first(:name => params[:b])
-  assign_handler_points
+  handlers = Handler.get_pair_safely(params[:a], params[:b])
+  handlers.assign_points params[:winner], :score => params[:score]
   @search = Search.first(:id => params[:search_id])
   @search.attributes = {
     :winner => params[:winner],
-    :loser => loser(@a, @b),
+    :loser => params[:loser],
     :win_score => @search.win_score + params[:score].to_i,
   }
   if @search.save
@@ -76,16 +76,30 @@ post '/compare/rank?' do
     flash[:success] = success_text[:ranked]
     redirect '/'
   else
-    flash[:error] = error_text[:generic]
+    flash[:error] = error_text[:cant_save]
     redirect '/'
   end
 end
 
 
+get '/compare/rank?' do
+  flash[:error] = error_text[:forbidden]
+  redirect '/'
+end
+
+
 get '/search/:id?' do
   @search = Search.first(:id => params[:id])
-  handlers = Handlers.get_pair_safely(@search.a, @search.b)
+  if @search == nil
+    flash[:error] = error_text[:search_not_found]
+    redirect '/'    
+  end
   q = injest_query(@search.query_term)
+  handlers = Handler.get_pair_safely(@search.a, @search.b)
+  if @search.winner
+    @winner = handlers.get @search.winner
+    @loser = handlers.get @search.loser
+  end
   @results = ab_search(handlers, q)
   haml :'results/main'
 end

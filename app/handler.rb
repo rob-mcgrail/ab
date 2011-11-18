@@ -81,3 +81,33 @@ class Handler
     end
   end
 end
+
+#
+# May just delete if run out of time
+#
+
+get '/handlers?' do
+  @active_handlers = Handler.all(:active => true)
+  @inactive_handlers = Handler.all(:active => false)
+  @active_handlers.sort! {|x,y| y.score <=> x.score }
+  haml :'handlers/list'
+end
+
+
+get '/handler/:handler_id?' do
+  @handler = Handler.first(:id => params[:handler_id])
+  @searches = Search.all(:a => @handler.id) + Search.all(:b => @handler.id)
+  haml :'handlers/inspect'
+end
+
+
+
+get '/handlers/admin?' do
+
+end
+
+
+
+get '/handlers/new?' do
+
+end

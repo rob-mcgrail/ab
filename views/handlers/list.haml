@@ -1,0 +1,18 @@
+%div(class='width4 stroke')
+    %div(class='column width2 first')
+        %h2
+            Active handlers
+            %hr
+        :javascript
+            #{js_table('#active_handlers')}
+        %table#active_handlers
+            = haml :'handlers/list_table', :locals => {:handlers => @active_handlers}
+
+    %div(class='column width2')
+        %h2
+            Inactive handlers
+            %hr
+        :javascript
+            #{js_table('#inactive_handlers')}
+        %table#inactive_handlers
+            = haml :'handlers/list_table', :locals => {:handlers => @inactive_handlers}

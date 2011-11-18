@@ -56,19 +56,13 @@ post '/compare?' do
 end
 
 
-get '/compare?' do
-  flash[:error] = error_text[:forbidden]
-  redirect '/'
-end
-
-
 post '/compare/rank?' do
   handlers = Handler.get_pair_safely(params[:a], params[:b])
   handlers.assign_points params[:winner], :score => params[:score]
   @search = Search.first(:id => params[:search_id])
   @search.attributes = {
-    :winner => params[:winner],
-    :loser => params[:loser],
+    :winner => params[:winner].to_i,
+    :loser => params[:loser].to_i,
     :win_score => @search.win_score + params[:score].to_i,
   }
   if @search.save
@@ -79,12 +73,6 @@ post '/compare/rank?' do
     flash[:error] = error_text[:cant_save]
     redirect '/'
   end
-end
-
-
-get '/compare/rank?' do
-  flash[:error] = error_text[:forbidden]
-  redirect '/'
 end
 
 
@@ -105,13 +93,15 @@ get '/search/:id?' do
 end
 
 
-get '/search/:id/explain?' do
-
+get '/search?' do
+  flash[:error] = error_text[:forbidden]
+  redirect '/'
 end
 
 
-get '/compare/:handler_a/:handler_b?' do
 
+get '/compare?' do
+  haml :'search/compare'
 end
 
 

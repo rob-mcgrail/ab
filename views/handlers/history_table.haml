@@ -1,0 +1,21 @@
+%thead
+    %tr
+        %th
+            Query
+        %th
+            Outcome
+        %th
+            Opponent
+%tbody
+    - locals[:searches].each do |search|
+        %tr
+            %td
+                = safe search.query_term
+            %td
+                = search_outcome(search, locals[:handler])
+            %td
+                - name = get_opponent(search, locals[:handler])
+                - if name == nil
+                    Unranked
+                - else
+                    = link_to(safe(name), "handler/#{get_handler_id(name)}")

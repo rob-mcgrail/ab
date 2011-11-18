@@ -1,0 +1,25 @@
+%thead
+    %tr
+        %th
+            Handler
+        %th
+            Score
+        %th
+            Times ranked
+        %th
+            Wins
+        %th
+            Losses
+%tbody
+    - locals[:handlers].each do |handler|
+        %tr
+            %td
+                = link_to(safe(handler.name), "handler/#{handler.id}")
+            %td
+                = handler.score
+            %td
+                = handler.ranked_searches
+            %td
+                = percent(handler.ranked_searches, handler.positive)
+            %td
+                = percent(handler.ranked_searches, handler.negative)

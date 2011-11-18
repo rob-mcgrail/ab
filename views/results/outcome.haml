@@ -1,8 +1,14 @@
-%h2
-    Results for #{safe @search.query_term}
+- if locals[:winner]
 
-%div(class='column width3 first outcome_info')
+    %h3
+        = link_to(safe(@winner.name), "handler/#{@winner.id}")
     %p
-        Winning handler: #{safe @winner.name} (Ranked best #{@winner.positive}/#{@winner.ranked_searches} times), with a total score of #{@winner.score}
+        Ranked best #{@winner.positive}/#{@winner.ranked_searches} times), with a total score of #{@winner.score}
+
+- else
+
+    %h3
+        = link_to(safe(@loser.name), "handler/#{@loser.id}")
     %p
-        Losing handler: #{safe @loser.name} (Ranked best #{@loser.positive}/#{@loser.ranked_searches} times)
+        Ranked best #{@loser.positive}/#{@loser.ranked_searches} times), with a total score of #{@winner.score}
+

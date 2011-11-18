@@ -6,6 +6,8 @@
             Outcome
         %th
             Opponent
+        %th
+            IP
 %tbody
     - locals[:searches].each do |search|
         %tr
@@ -19,3 +21,5 @@
                     Unranked
                 - else
                     = link_to(safe(name), "handler/#{get_handler_id(name)}")
+            %td
+                = search.ip

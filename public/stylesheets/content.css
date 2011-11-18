@@ -1,15 +1,31 @@
+/* Text */
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;color:#333; line-height:1.7em;}
+p{padding-top:0.7em;padding-bottom:0.7em;}
+
 /* Elements */
-body{font-size:16px;color:#333; line-height:1.7em;}
+header, section {padding-bottom:0px;}
 img{display:block;}
 em{font-style: italic;}
 strong{font-weight:bold;}
 hr{border: 1px dotted #555; border-width: 0 0 1px 0; margin: 10px 10px 10px 0px;}
 
+/* Headings */
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+padding-bottom:.25em;padding-top:0.25em;margin-right:2em;letter-spacing:0px;color:#444;line-height:1.2em;}
+h1, .h1{font-size:156%; font-weight:bold; font-style: normal;}
+h2, .h2{font-size:138%; font-weight:bold; font-style: normal;}
+h3, .h3{font-size:128%; font-weight:bold; font-style: normal;}
+h4, .h4{font-size:123.1%; font-weight:bold; font-style: normal;}
+h5, .h5{font-size:108%; font-weight:normal; font-style: normal;}
+h6, .h6{font-size:108%; font-weight:normal; font-style: italic;}
+
+/* links */
+h1 > a:focus, h1 > a:hover, h2 > a:focus, h2 > a:hover, h3 > a:focus, h3 > a:hover {color: #333; text-decoration: underline;}
+nav * a, h1 > a, h1 > a:visited, h2 > a, h2 > a:visited, h3 > a, h3 > a:visited {color: #444; text-decoration: underline;}
 
 /* Forms */
 input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;}
 .searchbox{margin-right:10px;}
-
 
 /* Flashes */
 div#flashes {min-height:30px;}
@@ -17,16 +33,13 @@ div#flashes {min-height:30px;}
 .success {color:green}
 
 /* results */
-div.rank_options {padding-bottom:20px;padding-top:10px;}
+div.rank_options {padding-bottom:10px;padding-top:0px;}
 div#permalink {padding-top:60px;}
-p.permalink, .outcome_info {color:#444;font-size:14px;}
+p.permalink {color:#444;font-size:14px;}
 div.winner {background-color:#C3FFDD;}
 div#outcome {margin:50px;margin-top:2px;}
 
-
 /* tables */
-
-
 table {clear: both; margin: 0 auto; width: 100%;}
 .odd {background:#C3FFDD;}
 .even {background:#ddd;}

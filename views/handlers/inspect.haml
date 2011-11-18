@@ -1,8 +1,13 @@
 %div(class='width4 stroke')
     %h2
+        = @handler.name
+    %p.handler_request
+        = @handler.request
+%div(class='width4 stroke')
+    %h3
         Search history
-        %hr
-        :javascript
-            #{js_table('#search_history', 2)}
-        %table#search_history
-            = haml :'handlers/history_table', :locals => {:searches => @searches, :handler => @handler.id}
+    %hr
+    :javascript
+        #{js_table('#search_history', 2)}
+    %table#search_history
+        = haml :'handlers/history_table', :locals => {:searches => @searches, :handler => @handler.id}

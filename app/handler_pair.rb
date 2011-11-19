@@ -7,14 +7,12 @@ class HandlerPair < Hash
     else
       self[:b].won(i)
       self[:a].lost
-    end    
-    unless self[:a].save
-      flash[:error] = error_text[:cant_save]
-      redirect '/'
     end
-    unless self[:b].save
-      flash[:error] = error_text[:cant_save]
-      redirect '/'
+    self.each_value do |v|
+      unless v.save
+        flash[:error] = error_text[:cant_save]
+        redirect '/'        
+      end
     end
   end
   

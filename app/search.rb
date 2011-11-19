@@ -7,10 +7,10 @@ class Search
   property :id,           Serial
   property :query_term,   String
   property :ip,           String
-  property :a,            String
-  property :b,            String
-  property :winner,       String,   :required => false
-  property :loser,        String,   :required => false
+  property :a,            Integer
+  property :b,            Integer
+  property :winner,       Integer,  :required => false
+  property :loser,        Integer,  :required => false
   property :win_score,    Integer,  :default  => 0
   property :created_at,   DateTime
   

@@ -1,4 +1,23 @@
 helpers do
+  def winner_class(k)
+    if @winner
+      'winner' if @winner.k == k
+    else
+      nil
+    end
+  end
+  
+  
+  def percent(a, b)
+    ratio = b.to_f / a.to_f * 100
+    if ratio.nan?
+      '0%'
+    else
+      "#{ratio.to_i}%"
+    end
+  end
+  
+
   def search_outcome(search, handler_id)
     if search.winner
       if search.winner == handler_id

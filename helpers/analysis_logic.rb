@@ -23,7 +23,7 @@ helpers do
       elsif search.b == handler_id
         handler = Handler.first(:id => search.a)
       else
-         flash[:error] = 'nothing matches in #get opponent'
+         flash[:error] = error_text[:generic]
          redirect '/'
       end
     end

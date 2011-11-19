@@ -35,6 +35,23 @@ get '/?' do
 end
 
 
+get '/search/:id?' do
+  @search = Search.first(:id => params[:id])
+  if @search == nil
+    flash[:error] = error_text[:search_not_found]
+    redirect '/'    
+  end
+  q = injest_query(@search.query_term)
+  handlers = Handler.get_pair_safely(@search.a, @search.b)
+  if @search.winner
+    @winner = handlers.get @search.winner
+    @loser = handlers.get @search.loser
+  end
+  @results = ab_search(handlers, q)
+  haml :'results/main'
+end
+
+
 post '/compare?' do
   q = injest_query(params[:query_term])
   handlers = Handler.any_two_safely
@@ -76,30 +93,13 @@ post '/compare/rank?' do
 end
 
 
-get '/search/:id?' do
-  @search = Search.first(:id => params[:id])
-  if @search == nil
-    flash[:error] = error_text[:search_not_found]
-    redirect '/'    
-  end
-  q = injest_query(@search.query_term)
-  handlers = Handler.get_pair_safely(@search.a, @search.b)
-  if @search.winner
-    @winner = handlers.get @search.winner
-    @loser = handlers.get @search.loser
-  end
-  @results = ab_search(handlers, q)
-  haml :'results/main'
-end
-
-
 get '/search?' do
   flash[:error] = error_text[:forbidden]
   redirect '/'
 end
 
 
-
+# finish this?
 get '/compare?' do
   haml :'search/compare'
 end

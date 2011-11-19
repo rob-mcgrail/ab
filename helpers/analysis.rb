@@ -1,7 +1,11 @@
 helpers do
-  def winner_class(k)
+  def winner_key?(k, value = true)
     if @winner
-      'winner' if @winner.k == k
+      if @.winner.k == k
+        value
+      else
+        nil
+      end
     else
       nil
     end

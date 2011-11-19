@@ -6,22 +6,22 @@
         %div(class='width4 stroke')
             %div(class='column width2 first')
                 %div(class='outcome')
-                    =haml :'results/outcome', :locals => {:winner => winner_class(:a)}
+                    =haml :'results/outcome', :locals => {winner_key?(:a)}
                 
             %div(class='column width2')
                 %div(class='outcome')
-                    =haml :'results/outcome', :locals => {:winner => winner_class(:b)}
+                    =haml :'results/outcome', :locals => {winner_key?(:b)}
     - else
         = haml :'results/rank_options' 
                 
 %div(class='width4 stroke')
-    %div(class='column width2 first result_set #{winner_class(:a)}')
+    %div(class='column width2 first result_set #{winner_key?(:a, 'winner')}')
  
         - @results[0][:items].each do |item|
             %div(class='result')
                 = haml :'results/item', :locals => {:item => item}
     
-    %div(class='column width2 result_set #{winner_class(:b)}')
+    %div(class='column width2 result_set #{winner_key?(:b, 'winner')}')
 
 
         - @results[1][:items].each do |item|

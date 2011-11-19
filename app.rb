@@ -27,6 +27,7 @@
 # Documentation for miscellaneous libraries:
 #
 # https://github.com/wbzyl/sinatra-static-assets/
+# https://github.com/SFEley/sinatra-flash
 
 require 'rubygems'
 require 'sinatra'

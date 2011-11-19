@@ -2,6 +2,7 @@ configure do
   set :base_score, 1
   set :super_score, 2
   set :solr_log_file, 'public/log/searches.csv'
+
   set :method_override, false
   set :sessions, true
   set :logging, false # stops annoying double log messages.

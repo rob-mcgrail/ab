@@ -1,5 +1,5 @@
 %div(class='width4 stroke')
-    - if @search.winner
+    - if @search.ranked?
         %h2
             Results for #{safe @search.query_term || params[:query_terms]}
         %hr    

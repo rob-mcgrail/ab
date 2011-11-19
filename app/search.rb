@@ -27,6 +27,14 @@ class Search
       puts e
     end
   end
+  
+  def ranked?
+    if self.winner
+      true
+    else
+      nil
+    end
+  end
 end
 
 
@@ -43,7 +51,7 @@ get '/search/:id?' do
   end
   q = injest_query(@search.query_term)
   handlers = Handler.get_pair_safely(@search.a, @search.b)
-  if @search.winner
+  if @search.ranked?
     @winner = handlers.get @search.winner
     @loser = handlers.get @search.loser
   end

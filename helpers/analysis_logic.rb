@@ -29,9 +29,4 @@ helpers do
     end
     handler.name
   end
-  
-  
-  def get_handler_id(handler_name)
-    Handler.first(:name => handler_name).id
-  end
 end

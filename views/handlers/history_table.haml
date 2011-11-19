@@ -20,6 +20,6 @@
                 - if name == nil
                     Unranked
                 - else
-                    = link_to(safe(name), "handler/#{get_handler_id(name)}")
+                    = link_to(safe(name), "handler/#{Handler.get_id_by_name(name)}")
             %td
                 = search.ip

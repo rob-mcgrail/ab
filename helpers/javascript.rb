@@ -1,16 +1,9 @@
 helpers do
   def js_table(id, cols = 4)
-    "$(document).ready(function() {$('#{id}').dataTable({
-      'aoColumnDefs': [
-        { 'asSorting': [ 'desc', 'asc' ], 'aTargets': [ #{number_list(cols)} ] },
-        ],
-      'oLanguage': {
-			  'sSearch': 'Filter:'
-		    },
-      'bPaginate': false, 
-      'bLengthChange': false, 
-      'bInfo': false
-    })});"
+    "$(document).ready(function() {$('#{id}').dataTable({'aoColumnDefs': [
+        { 'asSorting': [ 'desc', 'asc' ], 'aTargets': [ #{number_list(cols)} ] },],
+      'oLanguage': {'sSearch': 'Filter:'},'bPaginate': false, 'bLengthChange': false, 
+      'bInfo': false})});"
   end
 
   

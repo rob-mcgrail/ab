@@ -36,7 +36,7 @@ class Handler
   
   def self.any_two
     h = HandlerPair.new
-    a = Handler.all
+    a = Handler.all(:active => true)
     a.shuffle!
     h[:a] = a.pop
     h[:b] = a.pop

@@ -1,7 +1,7 @@
 helpers do
   def winner_key?(k, value = true)
     if @winner
-      if @.winner.k == k
+      if @winner.k == k
         value
       else
         nil

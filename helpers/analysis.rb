@@ -35,7 +35,7 @@ helpers do
   end
   
   
-  def get_opponent(search, handler_id) #redo all the db, and see if the to_i still necessary
+  def get_opponent(search, handler_id)
     if search.winner == handler_id
       handler = Handler.first(:id => search.loser)
     elsif search.loser == handler_id

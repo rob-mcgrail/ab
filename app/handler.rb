@@ -17,7 +17,7 @@ class Handler
   property :created_at,       DateTime
   
     
-  def won(i)
+  def won(i = 1)
     self.attributes = {
       :score => self.score + i.to_i,
       :positive => self.positive + 1,
@@ -26,7 +26,7 @@ class Handler
   end
   
   
-  def lost
+  def lost(i = 1)
     self.attributes = {
       :negative => self.negative + 1,
       :ranked_searches => self.ranked_searches + 1

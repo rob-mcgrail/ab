@@ -14,6 +14,8 @@ handler = Handler.first_or_create({ :name => '22222222' }, {
   :created_at => Time.now
 })
 
+handler.save
+
 handler = Handler.first_or_create({ :name => '33333333' }, {
   :name => '33333333',
   :request => 'qt=tki',

@@ -1,8 +1,10 @@
 #flashes
     - if flash[:success] || flash[:error]
         - if flash[:success]
-            %p.success
-                = flash[:success]
+            #success
+                %p.success
+                    = flash[:success]
         - if flash[:error]
-            %p.error
-                = flash[:error]
+            #error
+                %p.error
+                    = flash[:error]

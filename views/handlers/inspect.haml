@@ -1,8 +1,12 @@
 %div(class='width4 stroke')
-    %h2
-        = @handler.name
-    %p.handler_request
-        = @handler.request
+    :javascript
+        #{show_hide_click('#handler_request', '#handler_name')}
+    #handler_name_wrapper
+        %span(id='handler_name')
+            %h2= @handler.name
+        %div(id='handler_request' style='display: none;')
+            %p.handler_request
+                = @handler.request
 %div(class='width4 stroke')
     %h3
         Search history

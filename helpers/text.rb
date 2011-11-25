@@ -11,10 +11,20 @@ helpers do
     }
   end
   
+  
   def success_text
     {
-      :ranked => "Thanks. Your vote has been saved. Retrieve your search @ #{link_to uri("search/#{@search.id}", true), "search/#{@search.id}"}",
-      :search_for => "Results for #{safe @search.query_term}"
+      :ranked => "Thanks. Your vote has been saved. Retrieve your search @ #{link_to uri("search/#{@search.id}", true), "search/#{@search.id}", :class => 'success'}",
+      :search_for => "Results for #{safe @search.query_term}",
+    }
+  end
+  
+  
+  def misc_text
+    {
+      :outcome_won => 'Won',
+      :outcome_lost => 'Lost',
+      :outcome_unranked => 'Unranked',
     }
   end
 end

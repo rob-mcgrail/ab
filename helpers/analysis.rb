@@ -25,12 +25,12 @@ helpers do
   def search_outcome(search, handler_id)
     if search.winner
       if search.winner == handler_id
-        'Won'
+        misc_text[:outcome_won]
       elsif search.loser == handler_id
-        'Lost'
+        misc_text[:outcome_lost]
       end
     else
-    'Unranked'
+      misc_text[:outcome_unranked]
     end
   end
   

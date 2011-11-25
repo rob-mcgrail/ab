@@ -80,6 +80,7 @@ class Handler
       h
     end
   end
+
   
   def self.get_id_by_name(handler_name)
     Handler.first(:name => handler_name).id

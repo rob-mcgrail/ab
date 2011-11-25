@@ -17,16 +17,33 @@ a.button, button {
   border:1px solid #dedede;
   border-top:1px solid #eee;
   border-left:1px solid #eee;
-
-  background-color:#f5f5f5;
   font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  background-color:#f5f5f5;
   font-size:100%;
-  line-height:130%;
+  line-height:100%;
   text-decoration:none;
   font-weight:bold;
   color:#565656;
   cursor:pointer;
 }
+
+button#search-button {
+  margin: 0.7em 0.5em 0.7em 0;
+  padding:5px 10px 5px 7px;   /* Links */
+  font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  border:1px solid #dedede;
+  border-top:1px solid #eee;
+  border-left:1px solid #eee;
+
+  background-color:#f5f5f5;
+  font-size:130%;
+  line-height:160%;
+  text-decoration:none;
+  font-weight:bold;
+  color:#565656;
+  cursor:pointer;
+}
+
 button {
   width:auto;
   overflow:visible;
@@ -53,10 +70,10 @@ button img, a.button img{
 -------------------------------------------------------------- */
 
 /* Standard */
-button:hover, a.button:hover{
-  background-color:#dff4ff;
-  border:1px solid #c2e1ef;
-  color:#336699;
+#search-button:hover, button:hover, a.button:hover{
+  background-color:#E4E4E4;
+  border:1px solid #ADADAD;
+  color:#565656;
 }
 a.button:active{
   background-color:#6299c5;

@@ -12,4 +12,11 @@ helpers do
     i.times {|i| str << "#{i+1},"}
     str
   end
+  
+
+  def show_hide_click(divid, clickdivid)
+    str = "$(document).ready(function(){"
+    str << "$('#{clickdivid}').click(function(){"
+    str << "$(\"#{divid}\").fadeToggle('fast');});});"
+  end
 end

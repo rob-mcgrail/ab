@@ -9,7 +9,7 @@ p{padding-top:0.7em;padding-bottom:0.7em;}
 /* Search */
 
 #intro {max-width:400px;}
-
+.intro-text {color:gray;}
 /* Elements */
 header, section {padding-bottom:0px;}
 #footer {padding-top:20px;}

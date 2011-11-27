@@ -4,7 +4,7 @@
 #
 # $ gem install --no-ri --no-rdoc rack sinatra 
 # sinatra-static-assets sinatra-flash datamapper
-# dm-sqlite-adapter haml
+# dm-sqlite-adapter haml nokogiri
 #
 # Developed against ruby 1.8.7-head
 #
@@ -28,6 +28,7 @@
 #
 # https://github.com/wbzyl/sinatra-static-assets/
 # https://github.com/SFEley/sinatra-flash
+# http://nokogiri.org/
 
 require 'rubygems'
 require 'sinatra'
@@ -39,6 +40,7 @@ require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-migrations'
 require 'haml'
+require 'nokogiri'
 
 require 'settings'
 

@@ -6,14 +6,4 @@ helpers do
     end
     q
   end
-
-
-  def ab_search(h, q)
-    results = []
-    h.each do |k,v|
-      #the search
-      results << {:handler => v.id, :items => [1,2,3,4,k]} #dummy content
-    end
-    results
-  end
 end

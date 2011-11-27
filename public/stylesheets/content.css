@@ -7,9 +7,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;colo
 p{padding-top:0.7em;padding-bottom:0.7em;}
 
 /* Search */
-
 #intro {max-width:400px;}
 .intro-text {color:gray;}
+
 /* Elements */
 header, section {padding-bottom:0px;}
 #footer {padding-top:20px;}
@@ -40,18 +40,20 @@ div#flashes {min-height:30px;}
 .error {color:red}
 .success {color:green}
 
-/* results */
+/* Results */
 div.rank_options {padding-bottom:10px;padding-top:0px;}
-div#permalink {padding-top:60px;}
+div#permalink {padding-top:40px;}
 p.permalink {color:#444;font-size:14px;}
 div.winner {background-color:#C3FFDD;}
 div#outcome {margin:50px;margin-top:2px;}
+.result_title {font-size:19px;font-weight:normal;padding-bottom:10px;}
+#back_to_top {text-align:right; float:right;}
 
-/* handlers */
+/* Handlers */
 #handler_name_wrapper {min-height:90px;}
 .handler_request {color:gray;font-family:"Monaco","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;font-size:14px;}
 
-/* tables */
+/* Tables */
 table {clear: both; margin: 0 auto; width: 100%;}
 .odd {background:#C3FFDD;}
 .even {background:#ddd;}

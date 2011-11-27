@@ -55,7 +55,7 @@ get '/search/:id?' do
     @winner = handlers.get @search.winner
     @loser = handlers.get @search.loser
   end
-  @results = ab_search(handlers, q)
+  @results = Solr.ab_search(q, handlers)
   haml :'results/main'
 end
 
@@ -63,7 +63,7 @@ end
 post '/compare?' do
   q = injest_query(params[:query_term])
   handlers = Handler.any_two_safely
-  @results = ab_search(handlers, q)
+  @results = Solr.ab_search(q, handlers)
   @search = Search.new(
     :query_term =>  q,
     :ip =>          @env['REMOTE_ADDR'],
@@ -107,10 +107,7 @@ get '/search?' do
 end
 
 
-# finish this?
-get '/compare?' do
-  haml :'search/compare'
-end
+
 
 
 

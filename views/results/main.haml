@@ -17,14 +17,14 @@
 %div(class='width4 stroke')
     %div(class='column width2 first result_set #{winner_key?(:a, 'winner')}')
  
-        - @results[0][:items].each do |item|
+        - @results[:a][:items].each do |item|
             %div(class='result')
                 = haml :'results/item', :locals => {:item => item}
     
     %div(class='column width2 result_set #{winner_key?(:b, 'winner')}')
 
 
-        - @results[1][:items].each do |item|
+        - @results[:b][:items].each do |item|
             %div(class='result')
                 = haml :'results/item', :locals => {:item => item}
                 

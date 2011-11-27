@@ -1,2 +1,7 @@
-%p(class='permalink')
-    Retrieve this search at #{link_to(uri("search/#{@search.id}", true), "search/#{@search.id}")}
+%div(class='column width3 first')
+    %p(class='permalink')
+        Retrieve this search at #{link_to(uri("search/#{@search.id}", true), "search/#{@search.id}")}
+        
+        
+%div(class='column width1')
+    = haml :'backtotop'

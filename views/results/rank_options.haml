@@ -1,27 +1,27 @@
 %div(class='column width1 first rank_options')
     = haml :'results/rank_button', :locals => { |
-              :winner => @results[0][:handler], |
-              :loser => @results[1][:handler], |
+              :winner => @results[:a][:handler], |
+              :loser => @results[:b][:handler], |
               :text => 'Much better', |
               :score => settings.super_score}
 
 %div(class='column width1 rank_options')
     = haml :'results/rank_button', :locals => { |
-              :winner => @results[0][:handler], |
-              :loser => @results[1][:handler], |
+              :winner => @results[:a][:handler], |
+              :loser => @results[:b][:handler], |
               :text => 'Better', |
               :score => settings.base_score}
 
 %div(class='column width1 rank_options')
     = haml :'results/rank_button', :locals => { |
-              :winner => @results[1][:handler], |
-              :loser => @results[0][:handler], |
+              :winner => @results[:b][:handler], |
+              :loser => @results[:a][:handler], |
               :text => 'Better', |
               :score => settings.base_score}
 
 %div(class='column width1 rank_options')  
     = haml :'results/rank_button', :locals => { |
-              :winner => @results[1][:handler], |
-              :loser => @results[0][:handler], |
+              :winner => @results[:b][:handler], |
+              :loser => @results[:a][:handler], |
               :text => 'Much better', |
               :score => settings.super_score}

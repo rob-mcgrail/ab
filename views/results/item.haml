@@ -1,2 +1,4 @@
-%h2
-  = locals[:item]
+%h2.result_title
+    = link_to(locals[:item].title, locals[:item].url)
+%p.item_description
+    = locals[:item].summary

@@ -30,10 +30,10 @@ h6, .h6{font-size:108%; font-weight:normal; font-style: italic;}
 
 /* links */
 h1 > a:focus, h1 > a:hover, h2 > a:focus, h2 > a:hover, h3 > a:focus, h3 > a:hover {color: #333; text-decoration: underline;}
-nav * a, h1 > a, h1 > a:visited, h2 > a, h2 > a:visited, h3 > a, h3 > a:visited {color: #444; text-decoration: underline;}
+h1 > a, h1 > a:visited, h2 > a, h2 > a:visited, h3 > a, h3 > a:visited {color: #444; text-decoration: underline;}
 
 /* Forms */
-input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;margin-right:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; border:2px solid #888; background:#FFFFEB;font-size:18px;min-width:400px}
+input.handler, textarea.handler, input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;margin-right:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; border:2px solid #888; background:#FFFFEB;font-size:18px;min-width:400px}
 
 /* Flashes */
 div#flashes {min-height:30px;}
@@ -43,15 +43,18 @@ div#flashes {min-height:30px;}
 /* Results */
 div.rank_options {padding-bottom:10px;padding-top:0px;}
 div#permalink {padding-top:40px;}
-p.permalink {color:#444;font-size:14px;}
+p.permalink, p.back_to_top {color:#444;font-size:14px;}
 div.winner {background-color:#C3FFDD;}
 div#outcome {margin:50px;margin-top:2px;}
-.result_title {font-size:19px;font-weight:normal;padding-bottom:10px;}
+.result_title {font-size:19px;font-weight:normal;padding-bottom:10px;padding-top:15px;color:black;}
+.item_url {color:#663333;font-size:14px;}
 #back_to_top {text-align:right; float:right;}
 
 /* Handlers */
 #handler_name_wrapper {min-height:90px;}
 .handler_request {color:gray;font-family:"Monaco","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;font-size:14px;}
+.handler_admin_name {padding-top:7px;}
+.handler_admin_button {position:relative; left:70px;}
 
 /* Tables */
 table {clear: both; margin: 0 auto; width: 100%;}

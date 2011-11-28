@@ -6,11 +6,11 @@
         %div(class='width4 stroke')
             %div(class='column width2 first')
                 %div(class='outcome')
-                    =haml :'results/outcome', :locals => {:winner => winner_key?(:a)}
+                    = haml :'results/outcome', :locals => {:winner => winner_key?(:a)}
                 
             %div(class='column width2')
                 %div(class='outcome')
-                    =haml :'results/outcome', :locals => {:winner => winner_key?(:b)}
+                    = haml :'results/outcome', :locals => {:winner => winner_key?(:b)}
     - else
         = haml :'results/rank_options' 
                 

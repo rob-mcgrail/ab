@@ -85,13 +85,24 @@ class Handler
   def self.get_id_by_name(handler_name)
     Handler.first(:name => handler_name).id
   end
+  
+  
+  def valid_request?
+    begin
+      puts Solr.search('education', :handler => self.request)
+    rescue OpenURI::HTTPError
+      nil
+    else
+      true
+    end
+  end
 end
 
 #
 # May just delete if run out of time
 #
 
-get '/handlers?' do
+get '/handlers/?' do
   @active_handlers = Handler.all(:active => true)
   @inactive_handlers = Handler.all(:active => false)
   @active_handlers.sort! {|x,y| y.score <=> x.score }
@@ -99,7 +110,7 @@ get '/handlers?' do
 end
 
 
-get '/handler/:handler_id?' do
+get '/handler/:handler_id/?' do
   @handler = Handler.first(:id => params[:handler_id])
   @searches = Search.all(:a => @handler.id) + Search.all(:b => @handler.id)
   haml :'handlers/inspect'
@@ -107,12 +118,66 @@ end
 
 
 
-get '/handlers/admin?' do
+get '/handlers/admin/?' do
+  @active_handlers = Handler.all(:active => true)
+  @inactive_handlers = Handler.all(:active => false)
+  haml :'handlers/admin'
+end
 
+
+post '/handler/:handler_id/state_change/?' do
+  @handler = Handler.first(:id => params[:handler_id])
+  @state = params[:state]
+  if @state == 'active'
+    @handler.active = true
+  elsif @state == 'inactive'
+    @active_handlers = Handler.all(:active => true)
+    if @active_handlers.length < 3
+      flash[:error] = error_text[:need_handlers]
+      redirect '/handlers/admin'
+    else
+      @handler.active = false
+    end
+  else
+    flash[:error] = error_text[:generic]
+    redirect '/handlers/admin'
+  end
+  if @handler.save
+    flash[:success] = success_text[:handler_state_changed]
+    redirect '/handlers/admin'
+  else
+    flash[:error] = error_text[:cant_save]
+    redirect '/handlers/admin'
+  end
+end
+
+
+get '/handlers/admin/new/?' do
+  haml :'handlers/new'
+end
+
+
+post '/handlers/admin/new/?' do
+  @handler = Handler.new(
+    :name =>    params[:name],
+    :request => params[:request],
+    :created_at =>  Time.now
+  )
+  unless @handler.valid_request?
+    flash[:success] = error_text[:invalid_handler]
+    redirect '/handlers/admin'
+  end
+  if @handler.save
+    flash[:success] = success_text[:new_handler]
+    redirect '/handlers/admin'
+  else
+    flash[:error] = error_text[:cant_save]
+    redirect '/handlers/admin/new'
+  end  
 end
 
 
 
-get '/handlers/new?' do
 
-end
+
+

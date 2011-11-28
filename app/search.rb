@@ -43,7 +43,7 @@ get '/?' do
 end
 
 
-get '/search/:id?' do
+get '/search/:id/?' do
   @search = Search.first(:id => params[:id])
   if @search == nil
     flash[:error] = error_text[:search_not_found]
@@ -60,7 +60,7 @@ get '/search/:id?' do
 end
 
 
-post '/compare?' do
+post '/compare/?' do
   q = injest_query(params[:query_term])
   handlers = Handler.any_two_safely
   @results = Solr.ab_search(q, handlers)
@@ -81,7 +81,7 @@ post '/compare?' do
 end
 
 
-post '/compare/rank?' do
+post '/compare/rank/?' do
   handlers = Handler.get_pair_safely(params[:a], params[:b])
   handlers.assign_points params[:winner], :score => params[:score]
   @search = Search.first(:id => params[:search_id])
@@ -101,7 +101,7 @@ post '/compare/rank?' do
 end
 
 
-get '/search?' do
+get '/search/?' do
   flash[:error] = error_text[:forbidden]
   redirect '/'
 end

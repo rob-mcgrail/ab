@@ -17,7 +17,7 @@ class Solr
   def self.ab_search(q, handler_pair)
     results = {}
     handler_pair.each do |k,v|
-      results[k] = {:handler => v.id, :items=> Solr.search(q, :handler => '&' + v.request)}
+      results[k] = {:handler => v.id, :items=> Solr.search(q, :handler => v.request)}
     end
     results
   end
@@ -36,9 +36,7 @@ class Solr
 
 
 	def search(q, limit, handler=nil)
-	  limit = 1
-		query = "http://#{settings.solr}/solr/select?q=#{q}&rows=#{limit}#{handler}"
-		puts query
+		query = "http://#{settings.solr}/solr/select?q=#{q}&rows=#{limit}&#{handler}"
 		begin
 			raw_results = Nokogiri::XML(open(URI.encode(query)))
 		rescue SystemCallError, EOFError

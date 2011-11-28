@@ -1,7 +1,7 @@
 %div(class='width4 stroke')
     %div(class='column width2 first handler_list')
         %h2
-            Active handlers
+            Active handlers | #{link_to('admin', '/handlers/admin')}
         %hr
         :javascript
             #{js_table('#active_handlers')}
@@ -16,5 +16,8 @@
             #{js_table('#inactive_handlers')}
         %table#inactive_handlers
             = haml :'handlers/list_table', :locals => {:handlers => @inactive_handlers}
-       
+
+%div(class='width4 stroke')
+    %div(class='column width4')
+        = haml :'backtotop'       
 

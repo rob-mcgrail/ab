@@ -1,0 +1,10 @@
+%div(class='width2 stroke handler_admin' id='#{locals[:handler].id}')
+    %div(class='first column width1 handler_admin_name')
+        %h3
+            = link_to(safe(locals[:handler].name), "handler/#{locals[:handler].id}")
+            
+    %div(class='column width1 handler_admin_button')  
+        %form(method='post' action='/handler/#{locals[:handler].id}/state_change')
+            %input(name='state' type='hidden' value='active')
+            %button(type='submit' class='positive')
+                Activate

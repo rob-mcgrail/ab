@@ -3,7 +3,8 @@
         #{show_hide_click('#handler_request', '#handler_name')}
     #handler_name_wrapper
         %span(id='handler_name')
-            %h2= @handler.name
+            %h2
+                #{@handler.name} | #{link_to('see all', '/handlers')}
         %div(id='handler_request' style='display: none;')
             %p.handler_request
                 = @handler.request
@@ -15,3 +16,7 @@
         #{js_table('#search_history', 2)}
     %table#search_history
         = haml :'handlers/history_table', :locals => {:searches => @searches, :handler => @handler.id}
+        
+%div(class='width4 stroke')
+    %div(class='column width4')
+        = haml :'backtotop'

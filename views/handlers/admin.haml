@@ -1,0 +1,15 @@
+%div(class='width4 stroke')
+
+    %div(class='column width2 first handler_list')
+        %h2
+            Active handlers | #{link_to('new', '/handlers/admin/new')}
+        %hr
+        - @active_handlers.each do |handler|
+            = haml :'handlers/active_admin', :locals => {:handler => handler}
+
+    %div(class='column width2 handler_list')
+        %h2
+            Inactive handlers
+        %hr
+        - @inactive_handlers.each do |handler|
+            = haml :'handlers/inactive_admin', :locals => {:handler => handler}

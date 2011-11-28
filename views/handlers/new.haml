@@ -1,0 +1,21 @@
+%div(class='width4 stroke')
+    %h2
+        New handler
+    %hr
+    
+    %form(method='post' action='/handlers/admin/new')
+    
+        %label.form_label
+            Name
+        %br
+        %input(name='name' type='text' class='handler' title='Title - must be unique')
+        %br
+        
+        %label.form_label
+            Request string
+        %br
+        %textarea(name='request' class='handler' title='mm=5&qf=title_t^10')
+        %br
+        
+        %button(type='submit')
+            Create

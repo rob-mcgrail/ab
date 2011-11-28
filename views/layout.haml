@@ -7,6 +7,9 @@
         = javascript_script_tag '/javascript/jquery-1.5.1.min.js', '/javascript/hints.js', '/javascript/jquery.dataTables.min.js'
         /[if lte IE 8]
             = javascript_script_tag '/javascript/html5.js'
+        :javascript
+            $(document).ready(function() {$('input[title]').inputHints();});
+            $(document).ready(function() {$('textarea[title]').inputHints();});
     %body#page
         %div(id='main-content')
             = haml :header

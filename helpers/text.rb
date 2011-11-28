@@ -8,20 +8,33 @@ helpers do
       :missing_handler => 'Couldn\'t find something we need!',
       :cant_save => 'Something went serious wrong!',
       :no_query => 'You need to enter a search term!',
+      :need_handlers => 'You need at least two handlers!',
+      :invalid_handler => 'The handler you tried to create had invalid parameters!'
     }
   end
   
   
   def success_text
+    ##############
+    # Unimaginable horribleness, to be fixed.
+    require 'ostruct'
+    @search = OpenStruct.new unless @search
+    @handler = OpenStruct.new unless @handler
+    @state = '' unless @state
+    ##############
+    
     {
       :ranked => "Thanks. Your vote has been saved. Retrieve your search @ #{link_to uri("search/#{@search.id}", true), "search/#{@search.id}", :class => 'success'}",
       :search_for => "Results for #{safe @search.query_term}",
+      :handler_state_changed => "#{@handler.name} changed to #{@state}.",
+      :new_handler => "#{@handler.name} created."
     }
   end
   
   
   def misc_text
     {
+      :search_box => 'Search...',
       :outcome_won => 'Won',
       :outcome_lost => 'Lost',
       :outcome_unranked => 'Unranked',

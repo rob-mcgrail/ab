@@ -4,7 +4,7 @@
     #handler_name_wrapper
         %span(id='handler_name')
             %h2
-                #{@handler.name} | #{link_to('see all', '/handlers')}
+                #{@handler.name} | #{link_to('see all', '/handlers', :class => 'navlink')}
         %div(id='handler_request' style='display: none;')
             %p.handler_request
                 = @handler.request

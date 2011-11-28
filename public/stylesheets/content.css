@@ -17,6 +17,7 @@ img{display:block;}
 em{font-style: italic;}
 strong{font-weight:bold;}
 hr{border: 1px dotted #555; border-width: 0 0 1px 0; margin: 10px 10px 10px 0px;}
+.navlink {font-weight:normal;padding-left:20px;}
 
 /* Headings */
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;

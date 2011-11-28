@@ -1,7 +1,7 @@
 %div(class='width4 stroke')
     %div(class='column width2 first handler_list')
         %h2
-            Active handlers | #{link_to('admin', '/handlers/admin')}
+            Active handlers | #{link_to('admin', '/handlers/admin', :class => 'navlink')}
         %hr
         :javascript
             #{js_table('#active_handlers')}

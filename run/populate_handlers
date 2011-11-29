@@ -1,35 +1,41 @@
 require 'app.rb'
 
-handler = Handler.first_or_create({ :name => '1111111' }, {
-  :name => '1111111',
+handler = Handler.first_or_create({ :name => 'Original' }, {
+  :name => 'Original',
   :request => 'qt=tki',
   :created_at => Time.now
 })
 
 handler.save
 
-handler = Handler.first_or_create({ :name => '22222222' }, {
-  :name  => '22222222',
-  :request => 'qt=tki',
+handler = Handler.first_or_create({ :name => 'Alternative' }, {
+  :name  => 'Alternative',
+  :request => 'defType=dismax&fq=meta_anon_access_b:true AND (url:[* TO *] AND url:http AND -url:cmis.cwa.co.nz AND -url:"http\://admin") AND -url:"http\://www.nzmaths.co.nz" AND -keyword:waec AND -keyword:moec AND englishstatus:live&qf=title_t^10+keyword.text^7+description_t^5+location_t+dc.format+dc.right+dc.subject+topics.all.text+contentprovider+contentsource+strand+learningarea+keylearningobjective+educationalvalue+host+site+institution_name_t+ezf_df_text&bq=dc.right:"Ministry of Education Te Tāhuhu o te Mātauranga"^100',
   :created_at => Time.now
 })
 
 handler.save
 
-handler = Handler.first_or_create({ :name => '33333333' }, {
-  :name => '33333333',
-  :request => 'qt=tki',
+handler = Handler.first_or_create({ :name => 'NoMathsTest' }, {
+  :name => 'NoMathsTest',
+  :request => 'defType=dismax&fq=meta_anon_access_b:true AND (url:[* TO *] AND url:http AND -url:cmis.cwa.co.nz AND -url:"http\://admin") AND -url:"http\://www.nzmaths.co.nz" AND -keyword:waec AND -keyword:moec AND englishstatus:live &qf=title_t^10+keyword.text^7+description_t^5+location_t+dc.format+dc.right+dc.subject+topics.all.text+contentprovider+contentsource+strand+learningarea+keylearningobjective+educationalvalue+host+site+institution_name_t+url+ezf_df_text&bq=url:.nz^10 dc.right:"Ministry of Education Te Tāhuhu o te Mātauranga"^100',
   :created_at => Time.now
 })
 
 handler.save
 
-handler = Handler.first_or_create({ :name => '44444444' }, {
-  :name  => '44444444',
-  :request => 'qt=tki',
+handler = Handler.first_or_create({ :name => 'Alt2' }, {
+  :name  => 'Alt2',
+  :request => 'defType=dismax&ps=1&fq=meta_anon_access_b:true AND (url:[* TO *] AND url:http AND -url:cmis.cwa.co.nz AND -url:"http\://admin") AND -url:"http\://www.nzmaths.co.nz" AND -keyword:waec AND -keyword:moec AND englishstatus:live&pf=title_t^30+ezf_df_text^30+description_t^20&qf=title_t^10+keyword.text^7+description_t^5+location_t+dc.format+dc.right+dc.subject+topics.all.text+contentprovider+contentsource+strand+learningarea+keylearningobjective+educationalvalue+host+site+institution_name_t+url+ezf_df_text&qs=3&mm=-1&bq=url:.nz^10 dc.right:"Ministry of Education Te Tāhuhu o te Mātauranga"^100',
   :created_at => Time.now
 })
 
 handler.save
 
+handler = Handler.first_or_create({ :name => 'Alt2' }, {
+  :name  => 'TKIFork',
+  :request => 'defType=dismax&ps=3&fq=meta_anon_access_b:true AND (url:[* TO *] AND url:http AND -url:cmis.cwa.co.nz AND -url:"http\://admin") AND -url:"http\://www.nzmaths.co.nz" AND -keyword:waec AND -keyword:moec AND englishstatus:live&pf=title_t^50+ezf_df_text^50+description_t^30&qf=title_t^10+keyword.text^7+description_t^5+location_t+dc.format+dc.right+dc.subject+topics.all.text+contentprovider+contentsource+strand+learningarea+keylearningobjective+educationalvalue+host+site+institution_name_t+url+ezf_df_text&qs=3&mm=-3&bq=url:.nz^50 (dc.right:Ministry of Education, New Zealand)^100',
+  :created_at => Time.now
+})
 
+handler.save

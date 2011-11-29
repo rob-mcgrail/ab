@@ -56,6 +56,7 @@ div#outcome {margin:50px;margin-top:2px;}
 .handler_request {color:gray;font-family:"Monaco","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;font-size:14px;}
 .handler_admin_name {padding-top:7px;}
 .handler_admin_button {position:relative; left:70px;}
+#handler_request {max-width:800px;overflow:auto;}
 
 /* Tables */
 table {clear: both; margin: 0 auto; width: 100%;}

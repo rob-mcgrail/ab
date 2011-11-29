@@ -8,7 +8,7 @@ class Handler
 
   property :id,               Serial
   property :name,             String,   :unique => true
-  property :request,          String
+  property :request,          String,   :length => 3..1000
   property :score,            Integer,  :default => 0
   property :positive,         Integer,  :default => 0
   property :negative,         Integer,  :default => 0

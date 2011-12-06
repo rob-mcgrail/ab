@@ -103,6 +103,7 @@ end
 #
 
 get '/handlers/?' do
+  authorize!
   @active_handlers = Handler.all(:active => true)
   @inactive_handlers = Handler.all(:active => false)
   @active_handlers.sort! {|x,y| y.score <=> x.score }
@@ -111,14 +112,15 @@ end
 
 
 get '/handler/:handler_id/?' do
+  authorize!
   @handler = Handler.first(:id => params[:handler_id])
   @searches = Search.all(:a => @handler.id) + Search.all(:b => @handler.id)
   haml :'handlers/inspect'
 end
 
 
-
 get '/handlers/admin/?' do
+  authorize!
   @active_handlers = Handler.all(:active => true)
   @inactive_handlers = Handler.all(:active => false)
   haml :'handlers/admin'
@@ -126,6 +128,7 @@ end
 
 
 post '/handler/:handler_id/state_change/?' do
+  authorize!
   @handler = Handler.first(:id => params[:handler_id])
   @state = params[:state]
   if @state == 'active'
@@ -153,11 +156,13 @@ end
 
 
 get '/handlers/admin/new/?' do
+  authorize!
   haml :'handlers/new'
 end
 
 
 post '/handlers/admin/new/?' do
+  authorize!
   @handler = Handler.new(
     :name =>    params[:name],
     :request => params[:request],

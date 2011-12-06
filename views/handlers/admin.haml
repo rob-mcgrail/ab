@@ -2,7 +2,7 @@
 
     %div(class='column width2 first handler_list')
         %h2
-            Active handlers | #{link_to('new', '/handlers/admin/new', :class => 'navlink')}
+            Active handlers#{link_to('new', '/handlers/admin/new', :class => 'navlink')}
         %hr
         - @active_handlers.each do |handler|
             = haml :'handlers/active_admin', :locals => {:handler => handler}

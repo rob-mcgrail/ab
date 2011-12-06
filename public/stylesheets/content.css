@@ -18,6 +18,7 @@ em{font-style: italic;}
 strong{font-weight:bold;}
 hr{border: 1px dotted #555; border-width: 0 0 1px 0; margin: 10px 10px 10px 0px;}
 .navlink {font-weight:normal;padding-left:20px;}
+#logout, #login {float:right;}
 
 /* Headings */
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -34,7 +35,7 @@ h1 > a:focus, h1 > a:hover, h2 > a:focus, h2 > a:hover, h3 > a:focus, h3 > a:hov
 h1 > a, h1 > a:visited, h2 > a, h2 > a:visited, h3 > a, h3 > a:visited {color: #444; text-decoration: underline;}
 
 /* Forms */
-input.handler, textarea.handler, input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;margin-right:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; border:2px solid #888; background:#FFFFEB;font-size:18px;min-width:400px}
+input.handler, input.password, textarea.handler, input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;margin-right:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; border:2px solid #888; background:#FFFFEB;font-size:18px;min-width:400px}
 
 /* Flashes */
 div#flashes {min-height:30px;}

@@ -24,8 +24,9 @@ class Solr
 	
 	
 	def initialize
+	  # check these are the cheapest possible
 	  @xpaths = {
-	    :id => '//str[@name="id"]',
+	    :pid => '//str[@name="id"]',
 	    :title => '//arr[@name="title_t"]/str[1]',
 	    :url => '//arr[@name="url"]/*',
 	    :description => '//str[@name="description"]',
@@ -44,7 +45,7 @@ class Solr
 		end
 		results = []
 		raw_results.xpath('//doc').each do |doc|
-			doc = Nokogiri::XML.parse(doc.to_s)
+			doc = Nokogiri::XML.parse(doc.to_s) # confused... inefficient...
 			item = OpenStruct.new
       @xpaths.each do |k,v|
         item.send("#{k}=", doc.xpath(v).text)

@@ -46,17 +46,6 @@ class Handler
       h
     end
   end
-
-
-  def self.any_two_safely
-    h = Handler.any_two
-    if h == nil
-      flash[:error] = error_text[:no_handlers]
-      redirect '/'
-    else
-      h
-    end
-  end
   
   
   def self.get_pair(a, b)
@@ -65,17 +54,6 @@ class Handler
     h[:b] = Handler.first(:id => b)
     if h.has_value? nil
       nil
-    else
-      h
-    end
-  end
-  
-  
-  def self.get_pair_safely(a, b)
-    h = Handler.get_pair(a, b)
-    if h == nil
-      flash[:error] = error_text[:missing_handler]
-      redirect '/'
     else
       h
     end

@@ -38,6 +38,35 @@ class Search
 end
 
 
+helpers do
+  def indentical?(results)
+    puts '!!!!'
+    i = 0; matches = 0
+    results[:a][:items].each do |v|
+      if v.pid == results[:b][:items][i].pid && v.pid != nil
+        matches += 1
+        puts matches
+      end
+      i += 1
+    end
+    if matches == settings.results_length
+      true
+    else
+      nil
+    end
+  end
+
+  
+  def injest_query(q)
+    if q == nil || q == '' || q == misc_text[:search_box]
+      flash[:error] = error_text[:no_query]
+      redirect '/'
+    end
+    q
+  end
+end
+
+
 get '/?' do
   haml :'search/main'
 end
@@ -50,7 +79,11 @@ get '/search/:id/?' do
     redirect '/'    
   end
   q = injest_query(@search.query_term)
-  handlers = Handler.get_pair_safely(@search.a, @search.b)
+  handlers = Handler.get_pair(@search.a, @search.b)
+  if handlers == nil
+    flash[:error] = error_text[:missing_handler]
+    redirect '/'
+  else  
   if @search.ranked?
     @winner = handlers.get @search.winner
     @loser = handlers.get @search.loser
@@ -62,8 +95,30 @@ end
 
 post '/compare/?' do
   q = injest_query(params[:query_term])
-  handlers = Handler.any_two_safely
+  handlers = Handler.any_two #make this a helper? since it's repeated...
+  if handlers == nil
+    flash[:error] = error_text[:no_handlers]
+    redirect '/'
+  end
   @results = Solr.ab_search(q, handlers)
+  
+  # check if it's empty first, then that's an error
+  # check if it's a single result? or just leave that to the uniqueness
+  depth = 0
+  while indentical?(@results)
+    if depth >= settings.unique_attempts
+      flash[:error] = error_text[:no_differences]
+      redirect '/'    
+    end
+    handlers = Handler.any_two
+    if handlers == nil
+      flash[:error] = error_text[:no_handlers]
+      redirect '/'
+    end
+    @results = Solr.ab_search(q, handlers)
+    depth += 1
+  end
+  
   @search = Search.new(
     :query_term =>  q,
     :ip =>          @env['REMOTE_ADDR'],
@@ -81,7 +136,11 @@ end
 
 
 post '/compare/rank/?' do
-  handlers = Handler.get_pair_safely(params[:a], params[:b])
+  handlers = Handler.get_pair(params[:a], params[:b])
+  if handlers == nil
+    flash[:error] = error_text[:missing_handler]
+    redirect '/'
+  else
   handlers.assign_points params[:winner], :score => params[:score]
   @search = Search.first(:id => params[:search_id])
   @search.attributes = {

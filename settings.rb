@@ -4,7 +4,8 @@ configure do
   set :solr_log_file, 'public/log/searches.csv'
   set :solr, 'search.tki.org.nz:8983'
   set :summary_length, 178
-  set :results_length, 10
+  set :results_length, 5
+  set :unique_attempts, 20
   
   set :method_override, false
   set :sessions, true

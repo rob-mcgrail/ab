@@ -11,7 +11,8 @@ helpers do
       :need_handlers => 'You need at least two handlers!',
       :invalid_handler => 'The handler you tried to create had invalid parameters!',
       :invalid_password => 'Sorry, that\'s not the password',
-      :needs_password => 'Sorry, only administrators can see that...'   
+      :needs_password => 'Sorry, only administrators can see that...',
+      :no_differences => 'We tried that query in a bunch of combinations, and the results were always the same!'
     }
   end
   

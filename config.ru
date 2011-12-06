@@ -24,7 +24,16 @@ require 'app'
 #
 
 if settings.development?
-  use Rack::Static, :urls => ['/stylesheets', '/javascript', '/log', '/images', 'robots.txt'], :root => "public"
+  use Rack::Static, :urls => ['/stylesheets', '/javascript', '/logs', '/images', 'robots.txt'], :root => "public"
+end
+
+
+# Authentication middleware
+#https://github.com/hassox/warden/wiki/overview
+
+use Warden::Manager do |mgmt|
+  mgmt.default_strategies :password
+  mgmt.failure_app = Sinatra::Application
 end
 
 

@@ -88,8 +88,10 @@ class Handler
   
   
   def valid_request?
+    # This is really only enough of a check to avoid exceptions
+    # It could still be a completely ridiculous handler
     begin
-      puts Solr.search('education', :handler => self.request)
+      Solr.search('education', :handler => self.request)
     rescue OpenURI::HTTPError
       nil
     else
@@ -98,9 +100,6 @@ class Handler
   end
 end
 
-#
-# May just delete if run out of time
-#
 
 get '/handlers/?' do
   authorize!
@@ -163,13 +162,17 @@ end
 
 post '/handlers/admin/new/?' do
   authorize!
+  if params[:request] == 'mm=5&qf=title_t^10' || params[:name] == 'Name - must be unique'
+    flash[:error] = error_text[:invalid_handler]
+    redirect '/handlers/admin'
+  end
   @handler = Handler.new(
     :name =>    params[:name],
     :request => params[:request],
     :created_at =>  Time.now
   )
   unless @handler.valid_request?
-    flash[:success] = error_text[:invalid_handler]
+    flash[:error] = error_text[:invalid_handler]
     redirect '/handlers/admin'
   end
   if @handler.save

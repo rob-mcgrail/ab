@@ -72,7 +72,6 @@ post '/compare/?' do
     :created_at =>  Time.now
   )
   if @search.save
-    flash[:success] = success_text[:search_for]
     redirect "/search/#{@search.id}"
   else
     flash[:error] = error_text[:cant_save]

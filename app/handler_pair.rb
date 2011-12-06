@@ -10,7 +10,7 @@ class HandlerPair < Hash
     end
     self.each_value do |v|
       unless v.save
-        flash[:error] = error_text[:cant_save]
+        flash[:error] = error_text[:cant_save] #this should be an exception...
         redirect '/'        
       end
     end

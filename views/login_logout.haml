@@ -1,0 +1,7 @@
+- unless env['warden'].authenticated?
+    #login
+        %p= link_to 'admin login', 'login'
+                
+- if env['warden'].authenticated?
+    #logout
+        %p= link_to('handler admin', '/handlers/admin') + ' | ' + link_to('logout', 'logout')

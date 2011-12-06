@@ -12,7 +12,7 @@
                 %div(class='outcome')
                     = haml :'results/outcome', :locals => {:winner => winner_key?(:b)}
     - else
-        = haml :'results/rank_options' 
+        = haml :'results/rank_options'
                 
 %div(class='width4 stroke')
     %div(class='column width2 first result_set #{winner_key?(:a, 'winner')}')
@@ -22,7 +22,6 @@
                 = haml :'results/item', :locals => {:item => item}
     
     %div(class='column width2 result_set #{winner_key?(:b, 'winner')}')
-
 
         - @results[:b][:items].each do |item|
             %div(class='result')

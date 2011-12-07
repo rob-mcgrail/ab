@@ -40,16 +40,19 @@ end
 
 helpers do
   def indentical?(results)
-    puts '!!!!'
-    i = 0; matches = 0
+    return true if results == nil
+    i = 0; matches = 0; a = []
+    results.each {|k,v| a << v[:items].length}
+    match_length = a.min
     results[:a][:items].each do |v|
-      if v.pid == results[:b][:items][i].pid && v.pid != nil
-        matches += 1
-        puts matches
+      unless results[:b][:items][i] == nil
+        if v.pid == results[:b][:items][i].pid && v.pid != nil
+          matches += 1
+        end
       end
       i += 1
     end
-    if matches == settings.results_length
+    if matches == match_length
       true
     else
       nil
@@ -83,7 +86,7 @@ get '/search/:id/?' do
   if handlers == nil
     flash[:error] = error_text[:missing_handler]
     redirect '/'
-  else  
+  end  
   if @search.ranked?
     @winner = handlers.get @search.winner
     @loser = handlers.get @search.loser
@@ -95,30 +98,24 @@ end
 
 post '/compare/?' do
   q = injest_query(params[:query_term])
-  handlers = Handler.any_two #make this a helper? since it's repeated...
-  if handlers == nil
-    flash[:error] = error_text[:no_handlers]
-    redirect '/'
-  end
-  @results = Solr.ab_search(q, handlers)
-  
-  # check if it's empty first, then that's an error
-  # check if it's a single result? or just leave that to the uniqueness
   depth = 0
   while indentical?(@results)
+    depth += 1
     if depth >= settings.unique_attempts
       flash[:error] = error_text[:no_differences]
       redirect '/'    
+    elsif depth >= 3 and @results[:a][:items].length <= 1
+      flash[:error] = error_text[:no_differences]
+      redirect '/'      
+    else
+      handlers = Handler.any_two
+      if handlers == nil
+        flash[:error] = error_text[:no_handlers]
+        redirect '/'
+      end
+      @results = Solr.ab_search(q, handlers)
     end
-    handlers = Handler.any_two
-    if handlers == nil
-      flash[:error] = error_text[:no_handlers]
-      redirect '/'
-    end
-    @results = Solr.ab_search(q, handlers)
-    depth += 1
   end
-  
   @search = Search.new(
     :query_term =>  q,
     :ip =>          @env['REMOTE_ADDR'],
@@ -140,7 +137,7 @@ post '/compare/rank/?' do
   if handlers == nil
     flash[:error] = error_text[:missing_handler]
     redirect '/'
-  else
+  end
   handlers.assign_points params[:winner], :score => params[:score]
   @search = Search.first(:id => params[:search_id])
   @search.attributes = {

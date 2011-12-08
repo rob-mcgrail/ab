@@ -29,6 +29,7 @@ if settings.development?
   use Rack::Static, :urls => ['/stylesheets', '/javascript', '/logs', '/images', 'robots.txt'], :root => "public"
 end
 
+use Rack::Session::Cookie, :key => '_searchab', :secret => "changeme"
 
 # Authentication middleware
 #https://github.com/hassox/warden/wiki/overview

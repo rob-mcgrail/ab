@@ -40,13 +40,12 @@ end
 
 helpers do
   def indentical?(results)
-    puts 'Identical check'
-    return true if results == nil
+    return true if results.nil?
     i = 0; matches = 0; a = []
     results.each {|k,v| a << v[:items].length}
     match_length = a.min
     results[:a][:items].each do |v|
-      unless results[:b][:items][i] == nil
+      unless results[:b][:items][i].nil?
         if v.pid == results[:b][:items][i].pid && v.pid != nil
           matches += 1
         end
@@ -103,9 +102,9 @@ post '/compare/?' do
   while indentical?(@results)
     depth += 1
     if depth >= settings.unique_attempts
-      flash[:error] = error_text[:no_differences]
+      flash[:success] = error_text[:no_differences]
       redirect '/'    
-    elsif depth >= 3 and @results[:a][:items].length <= 1
+    elsif depth >= 3 && @results[:a][:items].length <= 1
       flash[:success] = error_text[:no_differences]
       redirect '/'      
     else

@@ -5,7 +5,7 @@ configure do
   set :solr, 'search.tki.org.nz:8983'
   set :summary_length, 178
   set :results_length, 5
-  set :unique_attempts, 20
+  set :unique_attempts, 7
   
   set :method_override, false
   set :sessions, true

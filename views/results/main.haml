@@ -1,20 +1,20 @@
-%div(class='width4 stroke')
+.width4.stroke
     - if @search.ranked?
         %h2
             Results for #{safe @search.query_term || params[:query_terms]}
         %hr    
-        %div(class='width4 stroke')
-            %div(class='column width2 first')
+        .width4.stroke
+            .column.width2.first
                 %div(class='outcome')
                     = haml :'results/outcome', :locals => {:winner => winner_key?(:a)}
                 
-            %div(class='column width2')
-                %div(class='outcome')
+            .column.width2
+                .outcome
                     = haml :'results/outcome', :locals => {:winner => winner_key?(:b)}
     - else
         = haml :'results/rank_options'
                 
-%div(class='width4 stroke')
+.width4.stroke
     %div(class='column width2 first result_set #{winner_key?(:a, 'winner')}')
  
         - @results[:a][:items].each do |item|
@@ -24,9 +24,9 @@
     %div(class='column width2 result_set #{winner_key?(:b, 'winner')}')
 
         - @results[:b][:items].each do |item|
-            %div(class='result')
+            .result
                 = haml :'results/item', :locals => {:item => item}
                 
-%div(class='width4 stroke' id='permalink')
-    %div(class='width4 first' id='permalink')
+.width4.stroke
+    .width4.first#permalink
         = haml :'results/permalink'

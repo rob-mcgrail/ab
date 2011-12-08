@@ -1,33 +1,33 @@
-%div(id='explanation' class='width4')
+#explanation.width4
     %p.explanation
         Below are two different sets of results for your query
         %span(class='your_term')= safe @search.query_term + '. '
     %p.explanation
         Tell us which you like best with the buttons below.
 
-%div(id='rank_option_list' class='width4')
-    %div(class='column width1 first rank_options')
+#rank_option_list.width4
+    .column.width1.first.rank_options
         = haml :'results/rank_button', :locals => { |
                   :winner => @results[:a][:handler], |
                   :loser => @results[:b][:handler], |
                   :text => 'Much better', |
                   :score => settings.super_score}
 
-    %div(class='column width1 rank_options')
+    .column.width1.rank_options
         = haml :'results/rank_button', :locals => { |
                   :winner => @results[:a][:handler], |
                   :loser => @results[:b][:handler], |
                   :text => 'Better', |
                   :score => settings.base_score}
 
-    %div(class='column width1 rank_options')
+    .column.width1.rank_options
         = haml :'results/rank_button', :locals => { |
                   :winner => @results[:b][:handler], |
                   :loser => @results[:a][:handler], |
                   :text => 'Better', |
                   :score => settings.base_score}
 
-    %div(class='column width1 rank_options')  
+    .column.width1.rank_options
         = haml :'results/rank_button', :locals => { |
                   :winner => @results[:b][:handler], |
                   :loser => @results[:a][:handler], |

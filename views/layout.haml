@@ -11,10 +11,10 @@
             $(document).ready(function() {$('input[title]').inputHints();});
             $(document).ready(function() {$('textarea[title]').inputHints();});
     %body#page
-        %div(id='main-content')
+        #main-content
             = haml :header
             = haml :flashes
             = yield if block_given?
         
-            %div(class='width4 stroke')
-                %div(class='width4 first' id='footer')
+            .width4.stroke
+                .width4.first#footer

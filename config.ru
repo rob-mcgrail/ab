@@ -23,6 +23,8 @@ require 'app'
 # http://rack.rubyforge.org/doc/classes/Rack/Static.html
 #
 
+use Rack::NoIE6
+
 if settings.development?
   use Rack::Static, :urls => ['/stylesheets', '/javascript', '/logs', '/images', 'robots.txt'], :root => "public"
 end
@@ -37,4 +39,7 @@ use Warden::Manager do |mgmt|
 end
 
 
+
 run Sinatra::Application
+
+

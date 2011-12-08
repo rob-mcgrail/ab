@@ -53,6 +53,8 @@ require 'haml'
 require 'nokogiri'
 require 'warden'
 require 'bcrypt'
+# Fork of https://github.com/sant0sk1/rack-noie6
+# due to error in original
 require 'plugins/noie6.rb'
 
 require 'settings'

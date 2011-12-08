@@ -1,14 +1,15 @@
-- if locals[:winner]
+- if env['warden'].authenticated?
+    - if locals[:winner]
+    
+        %h3
+            = link_to(safe(@winner.name), "handler/#{@winner.id}")
+        %p
+            Ranked best #{@winner.positive}/#{@winner.ranked_searches} times, with a total score of #{@winner.score}
 
-    %h3
-        = link_to(safe(@winner.name), "handler/#{@winner.id}")
-    %p
-        Ranked best #{@winner.positive}/#{@winner.ranked_searches} times, with a total score of #{@winner.score}
+    - else
 
-- else
-
-    %h3
-        = link_to(safe(@loser.name), "handler/#{@loser.id}")
-    %p
-        Ranked best #{@loser.positive}/#{@loser.ranked_searches} times, with a total score of #{@winner.score}
+        %h3
+            = link_to(safe(@loser.name), "handler/#{@loser.id}")
+        %p
+            Ranked best #{@loser.positive}/#{@loser.ranked_searches} times, with a total score of #{@winner.score}
 

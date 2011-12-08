@@ -7,8 +7,9 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px;colo
 p{padding-top:0.7em;padding-bottom:0.7em;}
 
 /* Search */
-#intro {max-width:400px;}
-.intro-text {color:gray;}
+#intro {overflow: hidden; padding-bottom:30px;}
+.intro-text {color:#555;font-size:19px;}
+.subtle {color:gray;font-style:italic;}
 .explanation {padding:4px; font-size:17px;}
 #explanation {padding-top:30px;padding-bottom:20px;}
 .your_term {color:green;}
@@ -40,9 +41,9 @@ h1 > a, h1 > a:visited, h2 > a, h2 > a:visited, h3 > a, h3 > a:visited {color: #
 input.handler, input.password, textarea.handler, input.searchbox{padding:10px;margin-top:5px;margin-bottom:5px;margin-right:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; border:2px solid #888; background:#FFFFEB;font-size:18px;min-width:400px}
 
 /* Flashes */
-div#flashes {min-height:30px;}
-.error {color:red}
-.success {color:green}
+div#flashes {min-height:30px;max-height:30px;overflow:hidden;float:left;}
+p.error {color:red; padding:0px;}
+p.success {color:green; padding:0px;}
 
 /* Results */
 div.rank_options {padding-bottom:10px;padding-top:0px;}

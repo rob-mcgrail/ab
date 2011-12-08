@@ -40,6 +40,7 @@ end
 
 helpers do
   def indentical?(results)
+    puts 'Identical check'
     return true if results == nil
     i = 0; matches = 0; a = []
     results.each {|k,v| a << v[:items].length}
@@ -105,12 +106,12 @@ post '/compare/?' do
       flash[:error] = error_text[:no_differences]
       redirect '/'    
     elsif depth >= 3 and @results[:a][:items].length <= 1
-      flash[:error] = error_text[:no_differences]
+      flash[:success] = error_text[:no_differences]
       redirect '/'      
     else
       handlers = Handler.any_two
       if handlers == nil
-        flash[:error] = error_text[:no_handlers]
+        flash[:success] = error_text[:no_handlers]
         redirect '/'
       end
       @results = Solr.ab_search(q, handlers)

@@ -53,6 +53,7 @@ require 'haml'
 require 'nokogiri'
 require 'warden'
 require 'bcrypt'
+require 'plugins/noie6.rb'
 
 require 'settings'
 

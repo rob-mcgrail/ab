@@ -1,7 +1,7 @@
 configure do
   set :base_score, 1
   set :super_score, 2
-  set :solr_log_file, 'public/log/searches.csv'
+  set :solr_log_file, 'public/logs/searches.csv'
   set :solr, 'search.tki.org.nz:8983'
   set :summary_length, 178
   set :results_length, 5

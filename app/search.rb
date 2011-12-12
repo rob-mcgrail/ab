@@ -118,7 +118,7 @@ post '/compare/?' do
   end
   @search = Search.new(
     :query_term =>  q,
-    :ip =>          @env['REMOTE_ADDR'],
+    :ip =>          request.ip,
     :a =>           handlers[:a].id,
     :b =>           handlers[:b].id,
     :created_at =>  Time.now

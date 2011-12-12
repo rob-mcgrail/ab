@@ -1,5 +1,19 @@
 require 'app.rb'
 
-puts 'Non-destructively updating database.'
+puts 'Non-destructively updating databases...'
+
+
+set :environment, :development
+load 'settings.rb'
+
+puts 'Updating database ' + settings.db
 
 DataMapper.auto_upgrade!
+
+set :environment, :production
+load 'settings.rb'
+
+puts 'Updating database ' + settings.db
+
+DataMapper.auto_upgrade!
+

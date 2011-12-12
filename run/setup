@@ -1,5 +1,27 @@
 require 'app.rb'
 
-puts 'Destructively updating database.'
+if ARGV[0] =~ /production/
+  set :environment, :production
+else
+  set :environment, :development
+end
+
+load 'settings.rb'
+
+puts 'Destructively updating database ' + settings.db
 
 DataMapper.auto_migrate!
+
+puts 'Seed initial data? Y/N'
+
+if gets.chomp.downcase == 'y'
+  require 'run/populate_handlers.rb'
+end
+
+puts 'Enter admin password:'
+
+ARGV[0] = gets.chomp
+
+require 'run/admin.rb'
+
+puts 'Setup complete'

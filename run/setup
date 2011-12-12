@@ -20,7 +20,7 @@ end
 
 puts 'Enter admin password:'
 
-ARGV[0] = $stdin.gets
+ARGV[0] = $stdin.gets.chomp
 
 require 'run/admin.rb'
 

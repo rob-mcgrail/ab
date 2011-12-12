@@ -14,13 +14,13 @@ DataMapper.auto_migrate!
 
 puts 'Seed initial data? Y/N'
 
-if gets.chomp.downcase == 'y'
+if $stdin.gets.chomp.downcase == 'y'
   require 'run/populate_handlers.rb'
 end
 
 puts 'Enter admin password:'
 
-ARGV[0] = gets.chomp
+ARGV[0] = $stdin.gets
 
 require 'run/admin.rb'
 

@@ -1,7 +1,5 @@
 %h2.result_title
     = link_to(locals[:item].title, locals[:item].url, :target => '_none')
-%p.item_description
-    = locals[:item].summary
 %p
     %span.item_url
         = link_to(locals[:item].url.url_trim(60), locals[:item].url, :target => '_none', :class => 'item_url')

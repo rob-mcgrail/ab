@@ -5,7 +5,7 @@ class Solr
 	def self.search(q='', opts={})
 	  default = {
 	    :limit => settings.results_length,
-	    :handler => 'qt=tki'
+	    :handler => 'qt=' + settings.default_handler
 	  }
 	  limit = opts[:limit] || default[:limit]
 	  handler = opts[:handler] || default[:handler]
@@ -24,15 +24,7 @@ class Solr
 	
 	
 	def initialize
-	  # check these are the cheapest possible
-	  @xpaths = {
-	    :pid => '//str[@name="id"]',
-	    :title => '//arr[@name="title_t"]/str[1]',
-	    :url => '//arr[@name="url"]/*',
-	    :description => '//str[@name="description"]',
-	    :body => '//arr[@name="attr_body_t"]/str[1]',
-	    :ezf => '//arr[@name="ezf_df_text"]/str[1]'
-	  }
+	  @xpaths = settings.record_hash
 	end
 
 

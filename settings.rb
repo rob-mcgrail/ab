@@ -2,11 +2,21 @@ configure do
   set :base_score, 1
   set :super_score, 2
   set :solr_log_file, 'public/logs/searches.csv'
-  set :solr, 'search.tki.org.nz:8983'
+  set :solr, 'yoursearchserver:8983'
   set :summary_length, 178
   set :results_length, 5
   set :unique_attempts, 7
-  
+  set :default_handler, 'standard'
+  # A record hash containing name and xpaths for record items
+  # you want to display in your results.
+  #
+  # Also update views/results/item.haml
+  set :record_hash, {
+	    :id => '//str[@name="id"]',
+	    :title => '//arr[@name="title_t"]/str[1]',
+	    :url => '//arr[@name="url"]/*',
+	  }
+	    
   set :method_override, false
   set :sessions, true
   set :logging, false # stops annoying double log messages.

@@ -1,0 +1,50 @@
+h1. ab
+
+Solr search ranking comparison app. Seed it with multiple alternative dismax queries, and let users rank result sets from a randomly selected pair. Result sets are checked for difference before being displayed.
+
+Statistics are available at /handlers. Switch handlers on and off, and add new ones at /handlers/admin.
+
+h2. Setup
+
+Install dependencies:
+
+@$ gem install --no-ri --no-rdoc rack sinatra sinatra-static-assets sinatra-flash datamapper dm-sqlite-adapter haml nokogiri warden bcrypt-ruby@
+
+To set up the sqlite3 database, set up an admin password, and seed some handlers:
+
+@$ ruby run/setup development@
+
+@$ ruby run/setup production@
+
+You don't have to populate with the default handlers, but if you don't
+you could experience errors until you've added handlers...
+
+App settings are in settings.rb in application root.
+
+<pre>
+configure do
+  set :base_score, 1 # 'better' score
+  set :super_score, 2 # 'much better' score
+  set :solr_log_file, 'public/logs/searches.csv'
+  set :solr, '0.0.0.0:8983'
+  set :summary_length, 178 # length of description in results
+  set :results_length, 5 # ammount of results
+  set :unique_attempts, 7 # max attempts to find unique results to compare
+  set :default_handler, 'standard' # handler to use by default
+  
+  # A record hash containing name and xpaths for record items
+  # you want to display in your results.
+  #
+  # Also update views/results/item.haml
+  set :record_hash, {
+	    :id => '//str[@name="id"]',
+	    :title => '//arr[@name="title_t"]/str[1]',
+	    :url => '//arr[@name="url"]/*',
+	    :description => '//str[@name="description"]',
+	  }
+	    
+  set :sessions, true
+  set :logging, false # stops annoying double log messages.
+  set :static, false # see config.ru for dev mode satatic file serving
+end
+</pre>
